@@ -53,6 +53,17 @@ public class ShoppingCartService {
         }
     }
 
+    public void updateQuantity(int userId, int productId, int quantity) {
+        CartItem existing = shoppingCartRepository.findByUserIdAndProductId(userId, productId);
+        if (existing != null) {
+            existing.setQuantity(quantity);
+
+            shoppingCartRepository.save(existing);
+        }
+    }
+
+
+
     @Transactional
     public ShoppingCart deleteCart(int userId) {
         shoppingCartRepository.deleteByUserId(userId);

@@ -46,10 +46,16 @@ public class ShoppingCartController {
     }
     // return the updated cart with status 201 Created
 
+    @PutMapping("/products/{productsId}")
+    public ShoppingCart updateCart(@PathVariable int productsId, @RequestBody ShoppingCartItem item, Principal principal) {
+        String username = principal.getName();
 
-    // add a PUT method to update an existing product in the cart - the url should be
-    // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
-    // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
+        User user = userService.getByUserName(username);
+        int userId = user.getId();
+        shoppingCartService.updateQuantity(userId, productsId,item.getQuantity());
+        return shoppingCartService.getByUserId(userId);
+    }
+
 
 
     @DeleteMapping
