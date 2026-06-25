@@ -56,8 +56,6 @@ public class ShoppingCartController {
         return shoppingCartService.getByUserId(userId);
     }
 
-
-
     @DeleteMapping
     public ShoppingCart deleteCart (Principal principal) {
         String username = principal.getName();
