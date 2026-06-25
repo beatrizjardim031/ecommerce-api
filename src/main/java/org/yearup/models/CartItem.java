@@ -19,6 +19,12 @@ public class CartItem {
     @Column(name = "quantity")
     private int quantity = 1;
 
+    @Transient
+    private Product product;
+
+    @Transient
+    private double discountPercent = 0;
+
     public int getCartItemId() {
         return cartItemId;
     }
@@ -49,5 +55,28 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public double getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public void setDiscountPercent(double discountPercent) {
+        this.discountPercent = discountPercent;
+    }
+
+    public double getLineTotal() {
+        double basePrice = product.getPrice();
+        double subTotal = basePrice * this.quantity;
+        double discountAmount = subTotal * discountPercent;
+        return subTotal - discountAmount;
     }
 }

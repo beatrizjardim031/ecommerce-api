@@ -45,7 +45,7 @@ public class OrderService {
 
         order = orderRepository.save(order);
 
-        for (ShoppingCartItem item : shoppingCart.getItems().values()) {
+        for (CartItem item : shoppingCart.getItems().values()) {
             OrderLineItem orderLineItem = new OrderLineItem();
             orderLineItem.setOrderId(order.getOrderId());
             orderLineItem.setProductId(item.getProductId());

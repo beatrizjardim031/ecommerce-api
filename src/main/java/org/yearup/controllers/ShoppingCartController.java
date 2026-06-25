@@ -47,7 +47,7 @@ public class ShoppingCartController {
     // return the updated cart with status 201 Created
 
     @PutMapping("/products/{productsId}")
-    public ShoppingCart updateCart(@PathVariable int productsId, @RequestBody ShoppingCartItem item, Principal principal) {
+    public ShoppingCart updateCart(@PathVariable int productsId, @RequestBody CartItem item, Principal principal) {
         String username = principal.getName();
 
         User user = userService.getByUserName(username);

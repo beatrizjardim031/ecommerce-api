@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShoppingCart {
-    private Map<Integer, ShoppingCartItem> items = new HashMap<>();
+    private Map<Integer, CartItem> items = new HashMap<>();
 
-    public Map<Integer, ShoppingCartItem> getItems() {
+    public Map<Integer, CartItem> getItems() {
         return items;
     }
 
-    public void setItems(Map<Integer, ShoppingCartItem> items) {
+    public void setItems(Map<Integer, CartItem> items) {
         this.items = items;
     }
 
@@ -18,11 +18,11 @@ public class ShoppingCart {
         return items.containsKey(productId);
     }
 
-    public void add(ShoppingCartItem item) {
+    public void add(CartItem item) {
         items.put(item.getProductId(), item);
     }
 
-    public ShoppingCartItem get(int productId) {
+    public CartItem get(int productId) {
         return items.get(productId);
     }
 
