@@ -58,8 +58,6 @@ public class ShoppingCartService {
         }
     }
 
-
-
     @Transactional
     public ShoppingCart deleteCart(int userId) {
         shoppingCartRepository.deleteByUserId(userId);
